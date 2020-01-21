@@ -19,5 +19,18 @@ namespace TinyClothes.Data
         /// https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/intro?view=aspnetcore-3.1
         /// </summary>
         public DbSet<Clothing> Clothing { get; set; } //property names can be the same as class names in C#
+
+
+        //example of abstracting the payment interface
+        //https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-3.1
+        /*interface PayProvider
+        {
+            MakePayment();
+        }
+
+        public void MakePayment(IPayProvider pay)
+        {
+            pay.MakePayment(50.00);
+        }*/
     }
 }
