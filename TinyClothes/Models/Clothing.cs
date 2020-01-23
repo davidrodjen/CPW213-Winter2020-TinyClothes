@@ -5,25 +5,27 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace TinyClothes.Models
-{   
+{
     /// <summary>
-    /// Represents a single clothing item
+    /// Represents a single clothing
+    /// item
     /// </summary>
     public class Clothing
     {
         /// <summary>
         /// The unique id for the clothing item
         /// </summary>
-        [Key] // Set as PK(Primary Key)
+        [Key] // Set as PK
         public int ItemId { get; set; }
 
         /// <summary>
-        /// The Size of the lcothing (Small, medium, large)
+        /// The size of the clothing (Small, Medium, Large)
         /// </summary>
         public string Size { get; set; }
 
         /// <summary>
-        /// Type of clothing, shirt, pants, etc
+        /// The type of clothing, shirt, pants,
+        /// etc
         /// </summary>
         public string Type { get; set; }
 
@@ -38,14 +40,13 @@ namespace TinyClothes.Models
         public double Price { get; set; }
 
         /// <summary>
-        /// Display the title of the clothing
+        /// The display title of the clothing item
         /// </summary>
         public string Title { get; set; }
 
         /// <summary>
-        /// Description of item
+        /// Description of the clothing
         /// </summary>
         public string Description { get; set; }
-
     }
 }
