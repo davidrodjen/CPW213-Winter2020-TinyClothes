@@ -9,7 +9,7 @@ In class website built using ASP.NET Core MVC
 TinyClothes is an inclass project aimed at training students to utilize Microsoft Visual Studio, to create an E-Commerce dynamic website
 linked to a Database. This simulation utilizes multiple dynamic tools:
 
-* ## Links and Resources
+ ## Links and Resources
   * #### [MVC](https://docs.microsoft.com/en-us/aspnet/mvc/)
   * #### [CRUD Funcationality](https://docs.microsoft.com/en-us/aspnet/core/data/ef-mvc/crud?view=aspnetcore-3.1)
   * #### [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/)
