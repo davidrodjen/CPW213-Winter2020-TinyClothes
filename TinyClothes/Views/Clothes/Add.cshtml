@@ -1,0 +1,42 @@
+﻿@model Clothing
+@{
+    ViewData["Title"] = "Add new Clothing product";
+}
+
+<h1>Add new clothing</h1>
+
+<form method="post">
+
+    <label asp-for="Size"></label>
+    <input asp-for="Size" />
+    <span asp-validation-for="Size"></span>
+    <br />
+
+    <label asp-for="Type"></label>
+    <input asp-for="Type" />
+    <span asp-validation-for="Type"></span>
+    <br />
+
+    <label asp-for="Color"></label>
+    <input asp-for="Color" />
+    <span asp-validation-for="Color"></span>
+    <br />
+
+    <label asp-for="Price"></label>
+    <input asp-for="Price" />
+    <span asp-validation-for="Price"></span>
+    <br />
+
+    <label asp-for="Title"></label>
+    <input asp-for="Title" />
+    <span asp-validation-for="Title"></span>
+    <br />
+
+    <label asp-for="Description"></label>
+    <input asp-for="Description" />
+    <span asp-validation-for="Description"></span>
+    <br />
+
+    <input type="submit" value="Add Clothing" />
+</form>
+
