@@ -24,10 +24,10 @@ namespace TinyClothes.Data
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        public static Clothing Add(Clothing c, StoreContext context) 
+        public static async Task<Clothing> Add(Clothing c, StoreContext context) //must wrap method with task type
         {
-            context.Add(c); //prepares INSERT query
-            context.SaveChanges(); //execute INSERT query
+            await context.AddAsync(c); //prepares INSERT query //await is required to run something Async
+            await context.SaveChangesAsync(); //execute INSERT query
 
             return c;
         }
