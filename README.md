@@ -16,10 +16,10 @@ linked to a Database. This simulation utilizes multiple dynamic tools:
   
   
 ## Requirements
- * ##### Microsoft Visual Studio
+ * #### Microsoft Visual Studio
     * This project is created using Visual Studio 2019 Community Edition
  * #### Microsoft SQL Server Management Studio
- * Components to Install
+ * Components to Install for the project in Visual Studio Installer
     * ASP.NET and Web Development
     * NuGet package manager
     * .NET Core Framework
