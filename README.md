@@ -19,7 +19,8 @@ linked to a Database. This simulation utilizes multiple dynamic tools:
  * #### Microsoft Visual Studio
     * This project is created using Visual Studio 2019 Community Edition
  * #### Microsoft SQL Server Management Studio
- * #### Components to Install for the project in Visual Studio Installer
+    * If you are not using SQL Server to create the database, you should install the components in Visual Studio using the Visual Studio         Installer. 
+ * #### Components to install for the project in Visual Studio Installer
     * ASP.NET and Web Development
     * NuGet package manager
     * .NET Core Framework
