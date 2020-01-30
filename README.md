@@ -21,7 +21,7 @@ linked to a Database. This simulation utilizes multiple dynamic tools:
  * #### Microsoft SQL Server Management Studio
     * If you are not using SQL Server to create the database, you should install the components in Visual Studio using the Visual Studio         Installer. 
  * #### Components to install for the project in Visual Studio Installer
-    * ASP.NET and Web Development
+    * ASP.NET and Web Development Version 3.1
     * NuGet package manager
     * .NET Core Framework
     * SQL Server Support
