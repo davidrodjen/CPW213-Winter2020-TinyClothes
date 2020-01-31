@@ -26,7 +26,7 @@ linked to a Database. This simulation utilizes multiple dynamic tools:
     * .NET Entity Framework Core 3.1
     * SQL Server Support
  
-## How to get TinyClothes Repo
+* ## How to get TinyClothes Repo
     * Open repository page
     * Select clone, and copy the URL
     * Open Visual Studio
