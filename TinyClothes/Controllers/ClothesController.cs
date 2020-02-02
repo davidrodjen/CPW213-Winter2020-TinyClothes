@@ -20,6 +20,7 @@ namespace TinyClothes.Controllers
         [HttpGet]
         public async Task<IActionResult> ShowAll(int? page)
         {
+
             const int PageSize = 2;
             int pageNumber = page ?? 1; //use page number, if not there use 1, C# Null coalescing Operator, look it up
 
