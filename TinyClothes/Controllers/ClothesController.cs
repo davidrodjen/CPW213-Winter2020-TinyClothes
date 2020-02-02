@@ -18,12 +18,28 @@ namespace TinyClothes.Controllers
         }
 
         [HttpGet]
-        public IActionResult ShowAll()
+        public async Task<IActionResult> ShowAll(int? page)
         {
+
+            const int PageSize = 2;
+            int pageNumber = page ?? 1; //use page number, if not there use 1, C# Null coalescing Operator, look it up
+
+            int maxPage = await GetMaxPage(PageSize);
+
+            ViewData["MaxPage"] = maxPage;
+
             // Just a placeholder ...
             List<Clothing> clothes =
-                    new List<Clothing>();
+                   await ClothingDb.GetClothingByPage(_context, pageNum: pageNumber, pageSize: PageSize);
             return View(clothes);
+        }
+
+        private async Task<int> GetMaxPage(int PageSize)
+        {
+            int numProducts = await ClothingDb.GetNumClothing(_context);
+
+            int maxPage = Convert.ToInt32(Math.Ceiling((double)numProducts / PageSize)); //need to cast a double for dividing of ints, then use Math.ceiling to go to next int up
+            return maxPage;
         }
 
         [HttpGet]

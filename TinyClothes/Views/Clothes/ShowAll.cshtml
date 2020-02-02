@@ -75,3 +75,13 @@
 }
     </tbody>
 </table>
+
+<ul class="pagination">
+    @* Print page numbers *@
+    @for (int i = 1; i <= (int)ViewData["MaxPage"]; i++) //Have to cast ViewData as an int
+    {
+        <li class="page-item">
+            <a class="page-link" asp-action="ShowAll" asp-route-page="@i">@i</a>
+        </li>
+    }
+</ul>
