@@ -23,6 +23,15 @@ linked to a Database. This simulation utilizes multiple dynamic tools:
  * #### Components to install for the project in Visual Studio Installer
     * ASP.NET and Web Development
     * NuGet package manager
-    * .NET Core Framework
+    * .NET Entity Framework Core 3.1
     * SQL Server Support
  
+* ## How to get TinyClothes Repo
+    * Open repository page
+    * Select clone, and copy the URL
+    * Open Visual Studio
+    * Select top option on the upper left of the window
+    * Select a location to download
+    * You can create a branch in either the repo or Visual Studio Code
+    * Make edits and code submissions through the branch related to the current issue
+    
