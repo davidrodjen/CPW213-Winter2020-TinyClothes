@@ -5,7 +5,7 @@
 
 <h1>Add new clothing</h1>
 
-<form method="post">
+<form method="post" class="text-center">
 
     <label asp-for="Size"></label>
     <input asp-for="Size" />
@@ -39,4 +39,14 @@
 
     <input type="submit" class="btn btn-outline-primary" value="Add Clothing" />
 </form>
+
+@section Scripts
+{ 
+    <partial name="_ValidationScriptsPartial" />
+
+    @* These scripts are included using the partial view above
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script> *@
+}
+
 
