@@ -15,7 +15,7 @@
        asp-controller="Clothes">
          Create New</a>
 </p>
-<table class="table">
+<table class="table table-hover">
     <thead>
         <tr>
             <th>
@@ -44,7 +44,7 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+        <tr class="table-info">
             <td>
                 @Html.DisplayFor(modelItem => item.ItemId)
             </td>
