@@ -22,10 +22,11 @@ namespace TinyClothes.Controllers
         {
 
             const int PageSize = 2;
+            // Null-coalescing operator ??
             int pageNumber = page ?? 1; //use page number, if not there use 1, C# Null coalescing Operator, look it up
+            ViewData["CurrentPage"] = pageNumber;
 
             int maxPage = await GetMaxPage(PageSize);
-
             ViewData["MaxPage"] = maxPage;
 
             // Just a placeholder ...
