@@ -64,11 +64,33 @@ namespace TinyClothes.Controllers
             return View(c);
         }
 
-
+        [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
             Clothing c =
                 await ClothingDb.GetClothingById(id, _context); //context is a field in the controller, hence _context
+
+            if(c == null) // Clothing not in the DB
+            {
+                // RETURNS A HTTP 404 - nOT FOUND
+                return NotFound();
+                //Redirects to page
+                //return RedirectToAction("ShowAll");
+            }
+
+            return View(c);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Clothing c)
+        {
+            if (ModelState.IsValid)
+            {
+                await ClothingDb.Edit(c, _context);
+                ViewData["Message"] =
+                    c.Title + " updated successfully";
+                return View(c); // You can take this one out if you want
+            }
 
             return View(c);
         }

@@ -77,6 +77,14 @@ namespace TinyClothes.Data
             return c;
         }
 
+        public static async Task<Clothing> Edit(Clothing c, StoreContext context) //changed from internal to public
+        {
+            await context.AddAsync(c);
+            context.Entry(c).State = EntityState.Modified; //Telling framwork it is already in database, we are just modifying it
+            await context.SaveChangesAsync();
+            return c;
+        }
+
         /// <summary>
         /// Adds a clothing object ot the database
         /// Returns the object with the Id populated
