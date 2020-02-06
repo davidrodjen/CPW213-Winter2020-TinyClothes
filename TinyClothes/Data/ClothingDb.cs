@@ -62,6 +62,30 @@ namespace TinyClothes.Data
         }
 
         /// <summary>
+        /// Returns a single clothing item or
+        /// null if there is no match
+        /// </summary>
+        /// <param name="id">Id of the clothing item</param>
+        /// <param name="context">Database context</param>
+        /// <returns></returns>
+        public static async Task<Clothing> GetClothingById(int id, StoreContext context) //changed from internal to public
+        {
+            Clothing c = await (from clothing in context.Clothing
+                          where clothing.ItemId == id
+                          select clothing).SingleOrDefaultAsync(); //will return as one object rather than a list
+
+            return c;
+        }
+
+        public static async Task<Clothing> Edit(Clothing c, StoreContext context) //changed from internal to public
+        {
+            await context.AddAsync(c);
+            context.Entry(c).State = EntityState.Modified; //Telling framwork it is already in database, we are just modifying it
+            await context.SaveChangesAsync();
+            return c;
+        }
+
+        /// <summary>
         /// Adds a clothing object ot the database
         /// Returns the object with the Id populated
         /// </summary>
