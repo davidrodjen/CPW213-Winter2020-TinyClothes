@@ -68,7 +68,10 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ItemId"
-                   class="btn btn-outline-primary">Edit</a>
+                   class="btn btn-outline-primary">Edit</a> |
+                <a asp-action="Delete"
+                   asp-route-id="@item.ItemId"
+                   class="btn btn-outline-danger">Delete</a> @*Adds a link to delete*@
             </td>
         </tr>
 }
