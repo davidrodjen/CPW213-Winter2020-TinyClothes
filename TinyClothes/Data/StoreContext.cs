@@ -20,6 +20,7 @@ namespace TinyClothes.Data
         /// </summary>
         public DbSet<Clothing> Clothing { get; set; } //property names can be the same as class names in C#
 
+        public DbSet<Account> Accounts { get; set; }
 
         //example of abstracting the payment interface
         //https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-3.1
