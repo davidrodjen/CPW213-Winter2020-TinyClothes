@@ -1,3 +1,6 @@
+![.NET Core](https://github.com/davidrodjen/CPW213-Winter2020-TinyClothes/workflows/.NET%20Core/badge.svg)
+
+
 # CPW213-Winter2020-TinyClothes
 In class website built using ASP.NET Core MVC
 
