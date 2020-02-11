@@ -71,8 +71,8 @@ namespace TinyClothes.Data
         public static async Task<Clothing> GetClothingById(int id, StoreContext context) //changed from internal to public
         {
             Clothing c = await (from clothing in context.Clothing
-                          where clothing.ItemId == id
-                          select clothing).SingleOrDefaultAsync(); //will return as one object rather than a list
+                                where clothing.ItemId == id
+                                select clothing).SingleOrDefaultAsync(); //will return as one object rather than a list
 
             return c;
         }
@@ -104,12 +104,17 @@ namespace TinyClothes.Data
             Clothing c = await GetClothingById(id, context);
 
             // If the product was found, delete it
-            if( c != null)
+            if (c != null)
             {
-                await context.AddAsync(c);
-                context.Entry(c).State = EntityState.Deleted;
-                await context.SaveChangesAsync();
+                await Delete(c, context);
             }
+        }
+
+        public async static Task Delete(Clothing c, StoreContext context)
+        { 
+            await context.AddAsync(c);
+            context.Entry(c).State = EntityState.Deleted;
+            await context.SaveChangesAsync();
         }
     }
 }
