@@ -34,7 +34,7 @@ namespace TinyClothes
         /// <param name="login"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static async Task<Account> DoesUserAMatch(LoginViewModel login, StoreContext context)
+        public static async Task<Account> DoesUserMatch(LoginViewModel login, StoreContext context)
         {
             Account acc =
                  await (from user in context.Accounts
