@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TinyClothes.Data;
 using Microsoft.EntityFrameworkCore; //Add this using for the Context
+using Microsoft.AspNetCore.Http;
 
 namespace TinyClothes
 {
@@ -39,6 +40,10 @@ namespace TinyClothes
 
             string connection = Configuration.GetConnectionString("ClothesDB");
 
+            ////Accessor to get one object to replace all instances of interface
+            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            //Same as above but easier
+            services.AddHttpContextAccessor();
 
             //Same as above using Lambda notation
             services.AddDbContext<StoreContext>
