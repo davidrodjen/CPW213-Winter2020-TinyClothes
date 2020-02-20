@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor sessionInfo  
+@* Injecting the context accessor and calling it sessionInfo *@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -28,12 +31,23 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Clothes" asp-action="ShowAll">Inventory</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Account" asp-action="Register">Register</a> 
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-controller="Account" asp-action="Login">Login</a>
-                        </li>
+                        @if (!SessionHelper.IsUserLoggedIn(sessionInfo))
+						{
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Account" asp-action="Register">Register</a> 
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>
+						}
+						else // When user is logged in
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light btn btn-outline-danger" 
+                                   asp-action="Logout" 
+                                   asp-controller="Account">Log Out</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
