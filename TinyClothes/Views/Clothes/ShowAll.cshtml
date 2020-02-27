@@ -45,7 +45,8 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
         <tr class="table-info">
             <td>
                 @Html.DisplayFor(modelItem => item.ItemId)
@@ -68,6 +69,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
+            @{
+                // Get curr url path "/Clothes/ShowAll"
+				string previousUrl =
+					http.HttpContext.Request.Path;
+                // Add query string "?page=2"
+                previousUrl += http.HttpContext.Request.QueryString.Value;
+			}
+
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ItemId"
                    class="btn btn-outline-primary">Edit</a> |
