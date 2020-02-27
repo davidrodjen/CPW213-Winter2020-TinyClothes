@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<TinyClothes.Models.Clothing>
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor http
 
 @{
     ViewData["Title"] = "List Clothinig Inventory";
@@ -43,7 +45,8 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
         <tr class="table-info">
             <td>
                 @Html.DisplayFor(modelItem => item.ItemId)
@@ -66,13 +69,23 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
+            @{
+                // Get curr url path "/Clothes/ShowAll"
+				string previousUrl =
+					http.HttpContext.Request.Path;
+                // Add query string "?page=2"
+                previousUrl += http.HttpContext.Request.QueryString.Value;
+			}
+
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ItemId"
                    class="btn btn-outline-primary">Edit</a> |
                 <a asp-action="Delete"
                    asp-route-id="@item.ItemId"
                    class="btn btn-outline-danger">Delete</a> @*Adds a link to delete*@
-            </td>
+                <a asp-action="Add" asp-controller="Cart" asp-route-id="@item.ItemId" 
+                   class="btn btn-outline-primary" asp-route-prevUrl="@http.HttpContext.Request.Path">Add to Cart</a>
+            </td> @*TODO: Keep page number in prev url*@
         </tr>
 }
     </tbody>
