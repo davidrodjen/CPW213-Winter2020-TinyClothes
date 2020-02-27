@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<TinyClothes.Models.Clothing>
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor http
 
 @{
     ViewData["Title"] = "List Clothinig Inventory";
@@ -72,7 +74,9 @@
                 <a asp-action="Delete"
                    asp-route-id="@item.ItemId"
                    class="btn btn-outline-danger">Delete</a> @*Adds a link to delete*@
-            </td>
+                <a asp-action="Add" asp-controller="Cart" asp-route-id="@item.ItemId" 
+                   class="btn btn-outline-primary" asp-route-prevUrl="@http.HttpContext.Request.Path">Add to Cart</a>
+            </td> @*TODO: Keep page number in prev url*@
         </tr>
 }
     </tbody>
