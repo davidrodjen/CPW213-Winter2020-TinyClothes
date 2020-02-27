@@ -13,6 +13,8 @@ namespace TinyClothes.Models
     /// </summary>
     public static class CartHelper
     {
+        private const string CartCookie = "CartCookie";
+
         public static void Add(Clothing c, IHttpContextAccessor http)
         {
             //convert object to text
@@ -25,7 +27,7 @@ namespace TinyClothes.Models
                 Secure = true
             };
 
-            http.HttpContext.Response.Cookies.Append("CartCookie", data);
+            http.HttpContext.Response.Cookies.Append(CartCookie, data, options);
 
             //CookieOptions options = new CookieOptions();
             //options.Expires
@@ -33,7 +35,13 @@ namespace TinyClothes.Models
 
         public static int GetCount(IHttpContextAccessor http)
         {
-            throw new NotImplementedException();
+            string data = http.HttpContext.Request.Cookies[CartCookie];
+
+            if (string.IsNullOrWhiteSpace(data))
+            {
+                return 0;
+            }
+            return 1;
         }
 
         public static List<Clothing> GetAllClothes(IHttpContextAccessor http)
