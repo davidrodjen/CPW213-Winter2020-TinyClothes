@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Clothing>
+@inject IHttpContextAccessor http
+@*You can add the microsoft injections through the view imports page*@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+			<td>
+				@if (SessionHelper.IsUserLoggedIn(http))
+				{
+                    <a asp-action="Edit" asp-route-id="@item.ItemId">Edit</a>
+				    <text>|</text>
+                    <a asp-action="Delete" asp-route-id="item.ItemId">Delete</a>
+				}
+                @{
+					string prevUrl = http.HttpContext.Request.Path;
+                    prevUrl += http.HttpContext.Request.QueryString.Value;
+                }
+                <a asp-action="Add" asp-controller="Cart"
+                   asp-route-id="@item.ItemId"
+                   asp-route-prevUrl="@prevUrl">Add To Cart</a>
+
+			</td>
+
+		</tr>
+}
+    </tbody>
+</table>
