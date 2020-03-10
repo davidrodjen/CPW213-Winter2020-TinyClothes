@@ -17,79 +17,8 @@
        asp-controller="Clothes">
          Create New</a>
 </p>
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ItemId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Size)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Type)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Color)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model)
-{
-        <tr class="table-info">
-            <td>
-                @Html.DisplayFor(modelItem => item.ItemId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Size)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Color)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            @{
-                // Get curr url path "/Clothes/ShowAll"
-				string previousUrl =
-					http.HttpContext.Request.Path;
-                // Add query string "?page=2"
-                previousUrl += http.HttpContext.Request.QueryString.Value;
-			}
 
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ItemId"
-                   class="btn btn-outline-primary">Edit</a> |
-                <a asp-action="Delete"
-                   asp-route-id="@item.ItemId"
-                   class="btn btn-outline-danger">Delete</a> @*Adds a link to delete*@
-                <a asp-action="Add" asp-controller="Cart" asp-route-id="@item.ItemId" 
-                   class="btn btn-outline-primary" asp-route-prevUrl="@http.HttpContext.Request.Path">Add to Cart</a>
-            </td> @*TODO: Keep page number in prev url*@
-        </tr>
-}
-    </tbody>
-</table>
+@await  Html.PartialAsync("_DisplayClothes", Model)
 
 <ul class="pagination">
     @* Print page numbers *@

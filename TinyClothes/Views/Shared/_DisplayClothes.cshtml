@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<Clothing>
-
+@inject IHttpContextAccessor http
+@*You can add the microsoft injections through the view imports page*@
 
 <table class="table">
     <thead>
@@ -29,7 +30,8 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.ItemId)
@@ -52,12 +54,24 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
+			<td>
+				@if (SessionHelper.IsUserLoggedIn(http))
+				{
+                    <a asp-action="Edit" asp-route-id="@item.ItemId">Edit</a>
+				    <text>|</text>
+                    <a asp-action="Delete" asp-route-id="item.ItemId">Delete</a>
+				}
+                @{
+					string prevUrl = http.HttpContext.Request.Path;
+                    prevUrl += http.HttpContext.Request.QueryString.Value;
+                }
+                <a asp-action="Add" asp-controller="Cart"
+                   asp-route-id="@item.ItemId"
+                   asp-route-prevUrl="@prevUrl">Add To Cart</a>
+
+			</td>
+
+		</tr>
 }
     </tbody>
 </table>

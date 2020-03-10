@@ -45,7 +45,7 @@
 </div>
 @if (Model != null && Model.Results.Count > 0)
 {
-	@await Html.PartialAsync("_DisplayClothes", Model.Results)
+	@await Html.PartialAsync("_DisplayClothes", Model.Results) //partial view name and model as params
 	@*<div>
 			<ul>
 				@foreach (Clothing c in Model.Results)
@@ -60,9 +60,10 @@ else
 	<p>No results to display</p>
 }
 
-<div>
+
+@*<div> //keeping this as an example
 	<a asp-action="ShowAll">Back to List</a>
-</div>
+</div>*@
 
 @section Scripts {
 	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
