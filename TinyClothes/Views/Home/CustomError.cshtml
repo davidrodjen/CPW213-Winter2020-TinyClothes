@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "Error!!!";
+}
+
+<h1>Uh-oh</h1>
+
+@if (ViewData["ErrorMsg"] != null)
+{
+    <h2>@ViewData["ErrorMsg"]</h2>
+}
+else 
+{ 
+    <p>Something bad happened. Please try again later.</p>
+}
+
+
