@@ -88,6 +88,8 @@ namespace TinyClothes
 
             app.UseSession(); // Allows Session data to be accessed******************
 
+            app.UseStatusCodePagesWithRedirects("/Home/CustomError?code={0}"); //custom 404 link//in homecontroller create actionmethod
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

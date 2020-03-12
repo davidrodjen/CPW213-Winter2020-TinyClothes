@@ -33,5 +33,19 @@ namespace TinyClothes.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult CustomError(string code)
+        {
+            switch (code) //converted if statement to switch
+            {
+                case "404":
+                    ViewData["ErrorMsg"] = "Not found";
+                    break;
+                case "400":
+                    ViewData["ErrorMsg"] = "That was a baaaaaaaad request";
+                    break;
+            }
+            return View();
+        }
     }
 }
