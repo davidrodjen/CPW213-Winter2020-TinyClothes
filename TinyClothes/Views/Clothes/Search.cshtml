@@ -46,14 +46,6 @@
 @if (Model != null && Model.Results.Count > 0)
 {
 	@await Html.PartialAsync("_DisplayClothes", Model.Results) //partial view name and model as params
-	@*<div>
-			<ul>
-				@foreach (Clothing c in Model.Results)
-				{
-						<li>@c.Title : @c.Price</li>
-				}
-			</ul>
-		</div>*@
 }
 else
 {

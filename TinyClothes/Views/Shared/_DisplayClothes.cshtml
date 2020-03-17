@@ -67,11 +67,16 @@
                 }
                 <a asp-action="Add" asp-controller="Cart"
                    asp-route-id="@item.ItemId"
-                   asp-route-prevUrl="@prevUrl">Add To Cart</a>
-
+                   data-cart-button
+                   data-cart-itemid="@item.ItemId"
+                   class="btn btn-outline-primary"
+                   asp-route-prevUrl="@prevUrl">Add To Cart
+                </a>
 			</td>
 
 		</tr>
 }
     </tbody>
 </table>
+
+

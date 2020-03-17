@@ -8,35 +8,63 @@
 
 <h1>Clothing Inventory</h1>
 
-@if (TempData["Message"] != null) 
-{ 
+@if (TempData["Message"] != null)
+{
     <div class="alert alert-success" role="alert">@TempData["Message"]</div>
 }
+
 <p>
-    <a class="btn btn-outline-primary"  asp-action="Add"
-       asp-controller="Clothes">
-         Create New</a>
+    <a asp-action="Search" class="btn btn-outline-danger"  asp-controller="Clothes">Search</a>
 </p>
 
-@await  Html.PartialAsync("_DisplayClothes", Model)
+<p>
+    <a class="btn btn-outline-primary" asp-action="Add"
+       asp-controller="Clothes">
+        Create New
+    </a>
+</p>
+
+@await Html.PartialAsync("_DisplayClothes", Model)
 
 <ul class="pagination">
     @* Print page numbers *@
     @for (int i = 1; i <= (int)ViewData["MaxPage"]; i++) //Have to cast ViewData as an int
     {
         @if (i != (int)ViewData["CurrentPage"])
-		{
+        {
             <li class="page-item">
-                <a class="page-link" 
-                   asp-action="ShowAll" 
+                <a class="page-link"
+                   asp-action="ShowAll"
                    asp-route-page="@i">@i</a>
             </li>
-		}
-		else
-        { 
+        }
+        else
+        {
             <li class="page-item active">
                 <a class="page-link" href="#">@i</a>
             </li>
         }
-	}
+    }
 </ul>
+
+@section Scripts{
+    <script>
+		console.log("Add to cart script");
+		$("*[data-cart-button]").click(
+			function () {
+                //stop <a> from being hit
+				event.preventDefault();
+
+                // The "Add to Cart" button that was clicked
+				var currBtn = this;
+				console.log(currBtn); //will output that object
+
+				var itemId = $(currBtn).attr("data-cart-itemid")
+				alert("You picked " + itemId);
+
+				$.post("/Cart/AddJS", { id: itemId }).done(function () {
+					alert("Cart item added");
+				});
+			});
+    </script>
+}

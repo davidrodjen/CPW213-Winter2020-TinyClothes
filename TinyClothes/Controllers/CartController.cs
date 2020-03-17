@@ -40,6 +40,14 @@ namespace TinyClothes.Controllers
             return Redirect(prevUrl);
         }
 
+        public async void AddJS()
+        {
+            // TODO: Get id of Clothing
+            // TODO: Add clothing to cart
+            // TODO: Send success response
+        }
+
+
         // Summary/Checkout page
         public IActionResult Checkout()
         {
